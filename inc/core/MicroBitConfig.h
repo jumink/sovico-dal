@@ -350,7 +350,7 @@ DEALINGS IN THE SOFTWARE.
 // n.b. This also disables the user serial port 'uBit.serial'.
 // Set '1' to enable.
 #ifndef MICROBIT_DBG
-#define MICROBIT_DBG                            1
+#define MICROBIT_DBG                            0
 #endif
 
 // Enable this to receive diagnostic messages from the heap allocator via the USB serial interface.
