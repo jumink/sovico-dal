@@ -23,36 +23,47 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-/**
-  * Class definition for a MemberFunctionCallback.
-  *
-  * C++ member functions (also known as methods) have a more complex
-  * representation than normal C functions. This class allows a reference to
-  * a C++ member function to be stored then called at a later date.
-  *
-  * This class is used extensively by the MicroBitMessageBus to deliver
-  * events to C++ methods.
-  */
-
 #include "MicroBitConfig.h"
-#include "MemberFunctionCallback.h"
+#include "MicroBitRotaryEncoder.h"
+#include "MicroBitFiber.h"
+#include "ErrorNo.h"
 
-/**
-  * Calls the method reference held by this MemberFunctionCallback.
-  *
-  * @param e The event to deliver to the method
-  */
-void MemberFunctionCallback::fire(MicroBitEvent e)
-{
-    invoke(object, method, e);
+uint32_t MicroBitRotaryEncoder::getValue(){
+    return nRotaryEncoderValue;
 }
 
-/**
-  * A comparison of two MemberFunctionCallback objects.
-  *
-  * @return true if the given MemberFunctionCallback is equivalent to this one, false otherwise.
-  */
-bool MemberFunctionCallback::operator==(const MemberFunctionCallback &mfc)
-{
-    return (object == mfc.object && (memcmp(method,mfc.method,sizeof(method))==0));
+void MicroBitRotaryEncoder::setValue(uint32_t value){
+    nRotaryEncoderValue = value;
 }
+void MicroBitRotaryEncoder::onCCW(){
+    if(nRotaryEncoderValue > 0)
+        nRotaryEncoderValue = nRotaryEncoderValue - 1;
+}
+
+void MicroBitRotaryEncoder::onCW(){
+    nRotaryEncoderValue = nRotaryEncoderValue + 1;
+    if(nRotaryEncoderValue > 9)
+        nRotaryEncoderValue = 9;
+}
+
+void MicroBitRotaryEncoder::onRotated(){    
+    uint32_t now = encoderTimer.read_ms();
+    if(now - nEncoderTime < 200) 
+        return;
+    nEncoderTime = now;
+    if(rotationDirection.read())
+        onCCW();
+    else
+        onCW();
+}
+
+MicroBitRotaryEncoder::MicroBitRotaryEncoder() :
+    rotaryEncoderInterrupt(P0_0),
+    rotationDirection(P0_30)
+{
+    rotaryEncoderInterrupt.mode(PullUp);
+    encoderTimer.start();
+    rotaryEncoderInterrupt.fall(this, &MicroBitRotaryEncoder::onRotated);
+}
+
+

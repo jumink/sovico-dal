@@ -37,6 +37,7 @@ set(YOTTA_AUTO_MICROBIT-DAL_CPP_FILES
     "drivers/MicroBitRadio.cpp"
     "drivers/MicroBitRadioDatagram.cpp"
     "drivers/MicroBitRadioEvent.cpp"
+    "drivers/MicroBitRotaryEncoder.cpp"
     "drivers/MicroBitSerial.cpp"
     "drivers/MicroBitStorage.cpp"
     "drivers/MicroBitThermometer.cpp"
