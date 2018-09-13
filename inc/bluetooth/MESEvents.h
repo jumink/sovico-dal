@@ -108,14 +108,6 @@ DEALINGS IN THE SOFTWARE.
 #define MES_DPAD_BUTTON_3_UP                14
 #define MES_DPAD_BUTTON_4_DOWN              15
 #define MES_DPAD_BUTTON_4_UP                16
-#define MES_DPAD_BUTTON_E_DOWN              17
-#define MES_DPAD_BUTTON_E_UP                18
-#define MES_DPAD_BUTTON_F_DOWN              19
-#define MES_DPAD_BUTTON_F_UP                20
-#define MES_DPAD_BUTTON_G_DOWN              21
-#define MES_DPAD_BUTTON_G_UP                22
-#define MES_DPAD_BUTTON_H_DOWN              23
-#define MES_DPAD_BUTTON_H_UP                24
 
 //
 // Events that typically use radio broadcast:

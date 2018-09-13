@@ -31,14 +31,16 @@ DEALINGS IN THE SOFTWARE.
 #include "MicroBitComponent.h"
 #include "MicroBitEvent.h"
 
-#define MICROBIT_PIN_BUTTON_A                   P0_17
-#define MICROBIT_PIN_BUTTON_B                   P0_26
-#define MICROBIT_PIN_BUTTON_C                   P0_16
-#define MICROBIT_PIN_BUTTON_D                   P0_21
-#define MICROBIT_PIN_BUTTON_E                   P0_22
-#define MICROBIT_PIN_BUTTON_F                   P0_23
-#define MICROBIT_PIN_BUTTON_G                   P0_0
-#define MICROBIT_PIN_BUTTON_H                   P0_30
+#define MICROBIT_PIN_BUTTON_A                   P0_16
+#define MICROBIT_PIN_BUTTON_B                   P0_17
+#define MICROBIT_PIN_BUTTON_C                   P0_18
+#define MICROBIT_PIN_BUTTON_D                   P0_26
+#define MICROBIT_PIN_BUTTON_E                   P0_27
+#define MICROBIT_PIN_BUTTON_F                   P0_28
+#define MICROBIT_PIN_BUTTON_G                   P0_29
+#define MICROBIT_PIN_BUTTON_H                   P0_21
+#define MICROBIT_PIN_BUTTON_ENCODER             P0_1
+
 #define MICROBIT_PIN_BUTTON_RESET               P0_19
 
 #define MICROBIT_BUTTON_EVT_DOWN                1

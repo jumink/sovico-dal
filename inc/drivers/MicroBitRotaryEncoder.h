@@ -23,50 +23,33 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef REF_COUNTED_H
-#define REF_COUNTED_H
+#ifndef MICROBIT_ROTARY_ENCODER_H
+#define MICROBIT_ROTARY_ENCODER_H
 
 #include "mbed.h"
 #include "MicroBitConfig.h"
-#include "MicroBitDevice.h"
+#include "MicroBitComponent.h"
+#include "MicroBitCoordinateSystem.h"
+#include "MicroBitStorage.h"
 
-/**
-  * Base class for payload for ref-counted objects. Used by ManagedString and MicroBitImage.
-  * There is no constructor, as this struct is typically malloc()ed.
-  */
-struct RefCounted
-{
+class MicroBitRotaryEncoder : public MicroBitComponent{
+    
 public:
-
-    /**
-      * The high 15 bits hold the number of outstanding references. The lowest bit is always 1
-      * to make sure it doesn't look like vtable.
-      * Should never be even or one (object should be deleted then).
-      * When it's set to 0xffff, it means the object sits in flash and should not be counted.
-      */
-    uint16_t refCount;
-
-    /**
-      * Increment reference count.
-      */
-    void incr();
-
-    /**
-      * Decrement reference count.
-      */
-    void decr();
-
-    /**
-      * Initializes for one outstanding reference.
-      */
-    void init();
-
-    /**
-      * Checks if the object resides in flash memory.
-      *
-      * @return true if the object resides in flash memory, false otherwise.
-      */
-    bool isReadOnly();
+    MicroBitRotaryEncoder();
+    uint32_t getValue();
+    void setValue(uint32_t value);
+    
+private:
+    uint32_t nRotaryEncoderValue;
+    uint32_t nEncoderTime;
+    InterruptIn rotaryEncoderInterrupt;
+    DigitalIn rotationDirection;
+    DigitalIn *dsw;
+    Timer encoderTimer;
+    void onRotated();
+    void onCCW();
+    void onCW();
 };
 
 #endif
+

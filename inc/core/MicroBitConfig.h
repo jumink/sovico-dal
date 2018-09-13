@@ -167,13 +167,13 @@ DEALINGS IN THE SOFTWARE.
 // Enable/Disable BLE during normal operation.
 // Set '1' to enable.
 #ifndef MICROBIT_BLE_ENABLED
-#define MICROBIT_BLE_ENABLED                    1
+#define MICROBIT_BLE_ENABLED                    0
 #endif
 
 // Enable/Disable BLE pairing mode mode at power up.
 // Set '1' to enable.
 #ifndef MICROBIT_BLE_PAIRING_MODE
-#define MICROBIT_BLE_PAIRING_MODE               1
+#define MICROBIT_BLE_PAIRING_MODE               0
 #endif
 
 // Enable/Disable the use of private resolvable addresses.
@@ -213,7 +213,7 @@ DEALINGS IN THE SOFTWARE.
 // If enabled, the micro:bit will only respond to connection requests from
 // known, bonded devices.
 #ifndef MICROBIT_BLE_WHITELIST
-#define MICROBIT_BLE_WHITELIST                  1
+#define MICROBIT_BLE_WHITELIST                  0
 #endif
 
 // Define the period of time for which the BLE stack will advertise (seconds)
@@ -234,21 +234,21 @@ DEALINGS IN THE SOFTWARE.
 // This allows over the air programming during normal operation.
 // Set '1' to enable.
 #ifndef MICROBIT_BLE_DFU_SERVICE
-#define MICROBIT_BLE_DFU_SERVICE                1
+#define MICROBIT_BLE_DFU_SERVICE                0
 #endif
 
 // Enable/Disable BLE Service: MicroBitEventService
 // This allows routing of events from the micro:bit message bus over BLE.
 // Set '1' to enable.
 #ifndef MICROBIT_BLE_EVENT_SERVICE
-#define MICROBIT_BLE_EVENT_SERVICE              1
+#define MICROBIT_BLE_EVENT_SERVICE              0
 #endif
 
 // Enable/Disable BLE Service: MicroBitDeviceInformationService
 // This enables the standard BLE device information service.
 // Set '1' to enable.
 #ifndef MICROBIT_BLE_DEVICE_INFORMATION_SERVICE
-#define MICROBIT_BLE_DEVICE_INFORMATION_SERVICE 1
+#define MICROBIT_BLE_DEVICE_INFORMATION_SERVICE 0
 #endif
 
 //
